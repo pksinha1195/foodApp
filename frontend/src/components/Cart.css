@@ -1,0 +1,11 @@
+.cart-container{
+    display: flex;
+    flex-flow: column;
+    width: 90vw;
+    margin-bottom: 50px;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-around;
+}
