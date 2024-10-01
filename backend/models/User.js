@@ -7,7 +7,11 @@ const userSchema = new mongoose.Schema({
     },
     email:{
         type:String,
-        required: true,
+        required: [true, "email id required"],
+        unique: true,
+        lowercase: true,
+        trim:true,
+        index: true,
     },
     password:{
         type: String,
@@ -17,6 +21,22 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     }  
-})
+     
+},
+{
+    statics : {
+        findByEmail(email){
+            return this.find({email:email})
+        }
+    }
+},
+
+)
+
+// userSchema.statics.findByEmail=function(email){
+//     return this.findByEmail({email:this.email})
+// }
+
+
 
 module.exports = mongoose.model("User", userSchema);

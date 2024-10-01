@@ -30,26 +30,32 @@ const Signup = ({ onClose }) => {
     setUserdata({...userData, [e.target.name]:e.target.value})
   }
   const handleSubmit=()=>{
-    console.log({userData});
+    console.log("user data : ",userData);
     dispatch(createUser(userData));
   }
 
   useEffect(()=>{
     if (loading==="success"){
+      if (userInfo.created===0){
+        // console.log("duplicate : ", userInfo);
+      }else{
+        dispatch(createCart({"user":userInfo.data._id}))
+        // console.log("success : ", userInfo);
+      }
       // console.log(userInfo.data._id);
-      dispatch(createCart({"user":userInfo.data._id}))
       alert(userInfo.message)
       onClose();
       setUserdata(initialState)
       dispatch(emptyfunction());
     }
     if (loading==="rejected"){
-      alert(`something happens.. \n`+  userInfo)
-      console.log(userInfo);
+      alert(`something happens..sunny\n`+  userInfo)
+      console.log("userInfo",userInfo);
       onClose();
       setUserdata(initialState)
       dispatch(emptyfunction());
     }
+    // eslint-disable-next-line
   },[loading])
  
   return (

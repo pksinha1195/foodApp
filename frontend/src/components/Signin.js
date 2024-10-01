@@ -29,8 +29,6 @@ const Signin = ({ onClose }) => {
 
 
   const handleSubmit=(e)=>{
-    // const username=document.getElementById("floatingInput").value
-    // const password=document.getElementById("floatingPassword").value
     if ( userData.email === "" || userData.password==="" ){
       alert("userName or Password cant be blank")
       e.preventDefault();

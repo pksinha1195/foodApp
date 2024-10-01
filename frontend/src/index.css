@@ -24,8 +24,12 @@ fieldset, legend{
 }
 
 
-.nav-link{
-    color: rgb(126, 25, 112)!important;
+.mynav{
+    background-color: transparent;
+    border: none;
+    color: purple;
+    text-decoration: none;
+    font-size: 22px;
 }
 
 .btn-color{

@@ -3,11 +3,12 @@ import { Outlet } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import { useSelector, useDispatch } from "react-redux";
-import "../index"
+import "../index.js"
 import { emptyUser } from "../store/userSlice";
 import { ShoppingCart } from 'lucide-react';
 
@@ -25,35 +26,35 @@ function Layout() {
     <>
       <Navbar expand="lg" style={{ padding: "0px" }} className="">
         <Container>
-          <Navbar.Brand href="/" style={{ color: "white" }}>
-            <b>FoodApp</b>
+          <Navbar.Brand  style={{ color: "white" }}>
+            <Link className=" mynav" to="/"><b>FoodApp</b></Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav" style={{position:"absolute", right:"100px",top:"0px"}} >
             <Nav className="ms-auto fs-5 ">
-              <Nav.Link className="px-4" href="/">
+              <Link className="px-4  mynav" to="/">
                 Home
-              </Nav.Link>
-              <Nav.Link className="px-4" href="/add-restaurant">
+              </Link>
+              <Link className="px-4 mynav" to="/add-restaurant">
                 Add Restaurant
-              </Nav.Link>
-              <Nav.Link className="px-4" href="/restaurantlist">
+              </Link>
+              <Link className="px-4 mynav" to="/restaurantlist">
                 Restaurant-List
-              </Nav.Link>
+              </Link>
               {/* <Nav.Link className="px-4" href="/restaurantdetails">
                 Restaurant-Details
               </Nav.Link> */}
-              <Nav.Link className="px-4">
+              <Link className="px-4 mynav">
               {loginUser.data ?
                 <>
-                <button className=""  style={{backgroundColor:"transparent",border:"none", color:"purple"}} ><ShoppingCart /></button>
-                <button className="mx-2 px-4"  style={{backgroundColor:"transparent", color:"purple", border:"none"}} onClick={logoutUser} >Log Out</button>
+                <button className="mynav"   ><ShoppingCart /></button>
+                <button className="mx-2 px-4 mynav" onClick={logoutUser} >Log Out</button>
                 </>:
-                <><button className="mx-2" href="/login" style={{backgroundColor:"transparent", color:"purple", border:"none"}} onClick={()=>setShowSignin(true)} >Log in</button>
-                <button className="mx-2" style={{backgroundColor:"transparent", color:"purple", border:"none"}} onClick={()=>setShowSignup(true)} >Sign Up</button></> }
+                <><button className="mx-2 mynav" onClick={()=>setShowSignin(true)} >Log in</button>
+                <button className="mx-2 mynav"  onClick={()=>setShowSignup(true)} >Sign Up</button></> }
                 {showSignup && <Signup onClose={()=>setShowSignup(false)} /> }
                 {showSignin && <Signin onClose={()=>setShowSignin(false)} /> }
-              </Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

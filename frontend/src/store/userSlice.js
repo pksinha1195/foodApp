@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const createUser = createAsyncThunk(
   "users/createuser",
   async (userData, { rejectWithValue }) => {
-    // console.log(userData);
+    console.log(userData);
     try {
       const response = await fetch("http://localhost:4000/createuser", {
         method: "POST",
@@ -12,10 +12,11 @@ export const createUser = createAsyncThunk(
         },
         body: JSON.stringify(userData),
       });
-      console.log(response);
-      if (!response.ok) {
-        throw new Error("failed to fetch user Details");
-      }
+      // console.log("response userSlice: ",response);
+      // if (!response.ok) {
+      //   // throw new Error("failed to fetch user Details");
+      //   return response.json();
+      // }
       return response.json();
     } catch (error) {
       return rejectWithValue(error.message);

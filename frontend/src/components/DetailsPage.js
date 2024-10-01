@@ -112,7 +112,7 @@ function DetailsPage() {
                                 <i className="fa-solid fa-indian-rupee-sign font"></i>
                                 <b className="fs-5">{" " + item.price}</b>
                               </p>
-                              <button className="btn btn-success mx-2">
+                              <button className="btn btn-success mx-2" >
                                 Add to Cart
                               </button>
                               <button
